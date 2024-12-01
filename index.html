@@ -3,80 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-        nav {
-            margin: 1rem 0;
-        }
-        nav a {
-            color: #333;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .btn {
-            background: #333;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <title>Our Family Tree</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    
-    <div class="content">
+        <h1>Our Family Tree</h1>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <button id="viewToggle">Toggle View</button>
+            <button id="zoomIn"><i class="fas fa-search-plus"></i></button>
+            <button id="zoomOut"><i class="fas fa-search-minus"></i></button>
         </nav>
-        
-        <section id="home">
-            <h2>Home</h2>
-            <p>Welcome to my simple website! Click the button below to change the theme.</p>
-            <button class="btn" onclick="document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16)">
-                Change Theme
-            </button>
-        </section>
-        
-        <section id="about">
-            <h2>About</h2>
-            <p>This is a simple demonstration website created using HTML, CSS, and JavaScript.</p>
-        </section>
-        
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: example@example.com</p>
-        </section>
-    </div>
+    </header>
 
-    <script>
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const id = e.target.getAttribute('href').slice(1);
-                document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-            });
-        });
-    </script>
+    <main>
+        <div class="family-tree" id="familyTree">
+            <!-- Generation 1 -->
+            <div class="generation">
+                <div class="member" data-id="1">
+                    <img src="/api/placeholder/150/150" alt="Grandfather">
+                    <h3>John Smith</h3>
+                    <p>1940 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+                <div class="member" data-id="2">
+                    <img src="/api/placeholder/150/150" alt="Grandmother">
+                    <h3>Mary Smith</h3>
+                    <p>1942 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+            </div>
+
+            <!-- Generation 2 -->
+            <div class="generation">
+                <div class="member" data-id="3">
+                    <img src="/api/placeholder/150/150" alt="Father">
+                    <h3>James Smith</h3>
+                    <p>1965 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+                <div class="member" data-id="4">
+                    <img src="/api/placeholder/150/150" alt="Aunt">
+                    <h3>Sarah Johnson</h3>
+                    <p>1968 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+            </div>
+
+            <!-- Generation 3 -->
+            <div class="generation">
+                <div class="member" data-id="5">
+                    <img src="/api/placeholder/150/150" alt="You">
+                    <h3>Michael Smith</h3>
+                    <p>1990 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+                <div class="member" data-id="6">
+                    <img src="/api/placeholder/150/150" alt="Sister">
+                    <h3>Emma Smith</h3>
+                    <p>1992 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+                <div class="member" data-id="7">
+                    <img src="/api/placeholder/150/150" alt="Cousin">
+                    <h3>David Johnson</h3>
+                    <p>1991 - Present</p>
+                    <i class="fas fa-info-circle info-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for member details -->
+        <div id="memberModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="member-details">
+                    <img src="" alt="Member photo" id="modalImage">
+                    <div class="info">
+                        <h2 id="modalName"></h2>
+                        <p id="modalDates"></p>
+                        <div id="modalBio"></div>
+                        <div class="additional-photos" id="modalPhotos">
+                            <!-- Additional photos will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Family Tree Project - Click on family members to learn more</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
