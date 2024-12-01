@@ -3,61 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            margin: 1rem 0;
+        }
+        nav a {
+            color: #333;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .btn {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Welcome to My Website</h1>
     </header>
-
-    <main>
-        <section id="home" class="hero">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple but modern website created with HTML, CSS, and JavaScript.</p>
-            <button id="changeColorBtn">Change Background Color</button>
+    
+    <div class="content">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        
+        <section id="home">
+            <h2>Home</h2>
+            <p>Welcome to my simple website! Click the button below to change the theme.</p>
+            <button class="btn" onclick="document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16)">
+                Change Theme
+            </button>
         </section>
-
+        
         <section id="about">
             <h2>About</h2>
-            <p>This is a demonstration of a clean, responsive website layout.</p>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>Responsive Design</h3>
-                    <p>Looks great on all devices</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Modern Layout</h3>
-                    <p>Clean and professional design</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Interactive</h3>
-                    <p>Engaging user experience</p>
-                </div>
-            </div>
+            <p>This is a simple demonstration website created using HTML, CSS, and JavaScript.</p>
         </section>
-
+        
         <section id="contact">
             <h2>Contact</h2>
-            <form id="contactForm">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Your message"></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            <p>Email: example@example.com</p>
         </section>
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; 2024 My Simple Website. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = e.target.getAttribute('href').slice(1);
+                document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+            });
+        });
+    </script>
 </body>
 </html>
